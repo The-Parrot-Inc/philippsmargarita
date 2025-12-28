@@ -1,5 +1,7 @@
 export type Language = 'en' | 'de' | 'es' | 'ko' | 'fr' | 'it' | 'ca';
 
+import type { SeasonalMap } from '../data/seasonal';
+
 export interface Translations {
   nav: {
     scroll: string;
@@ -21,20 +23,12 @@ export interface Translations {
     subtitle: string;
     title1: string;
     title2: string;
+    // seasonal entries keyed by year-month (YYYY-MM) so ordering is explicit
+    seasonal: SeasonalMap;
     margarita: {
       title: string;
       description1: string;
       description2: string;
-    };
-    tequila: {
-      season: string;
-      title: string;
-      description: string;
-    };
-    gluhwein: {
-      season: string;
-      title: string;
-      description: string;
     };
   };
   philosophy: {
@@ -79,6 +73,8 @@ export interface Translations {
   };
 }
 
+import seasonalData from '../data/seasonal';
+
 export const translations: Record<Language, Translations> = {
   en: {
     nav: {
@@ -101,21 +97,13 @@ export const translations: Record<Language, Translations> = {
       subtitle: 'Our Selection',
       title1: 'Crafted for',
       title2: 'the Few',
+      seasonal: seasonalData.en,
       margarita: {
         title: 'The Margarita',
         description1: 'Our signature creation defines our story: classic, balanced, unforgettable.',
         description2: 'Discover flavors that evolve, yet remain timeless.',
       },
-      tequila: {
-        season: 'October & November',
-        title: 'Tequila',
-        description: 'Our seasonal muse.',
-      },
-      gluhwein: {
-        season: 'December',
-        title: 'Glühwein',
-        description: 'Reimagined with warmth.',
-      },
+      // tequila and gluhwein removed — use `seasonal` map instead
     },
     philosophy: {
       subtitle: 'Our Philosophy',
@@ -179,21 +167,13 @@ export const translations: Record<Language, Translations> = {
       subtitle: 'Unsere Auswahl',
       title1: 'Kreiert für',
       title2: 'die Wenigen',
+      seasonal: seasonalData.de,
       margarita: {
         title: 'Die Margarita',
         description1: 'Unsere charakteristische Kreation definiert unsere Geschichte: klassisch, ausgewogen, unvergesslich.',
         description2: 'Entdecken Sie Aromen, die sich entwickeln und doch zeitlos bleiben.',
       },
-      tequila: {
-        season: 'Oktober & November',
-        title: 'Tequila',
-        description: 'Unsere saisonale Muse.',
-      },
-      gluhwein: {
-        season: 'Dezember',
-        title: 'Glühwein',
-        description: 'Neu interpretiert mit Wärme.',
-      },
+      // tequila and gluhwein removed — use `seasonal` map instead
     },
     philosophy: {
       subtitle: 'Unsere Philosophie',
@@ -257,21 +237,13 @@ export const translations: Record<Language, Translations> = {
       subtitle: 'Nuestra Selección',
       title1: 'Creado para',
       title2: 'los Pocos',
+      seasonal: seasonalData.es,
       margarita: {
         title: 'La Margarita',
         description1: 'Nuestra creación característica define nuestra historia: clásica, equilibrada, inolvidable.',
         description2: 'Descubre sabores que evolucionan pero permanecen atemporales.',
       },
-      tequila: {
-        season: 'Octubre y Noviembre',
-        title: 'Tequila',
-        description: 'Nuestra musa estacional.',
-      },
-      gluhwein: {
-        season: 'Diciembre',
-        title: 'Glühwein',
-        description: 'Reinventado con calidez.',
-      },
+      // tequila and gluhwein removed — use `seasonal` map instead
     },
     philosophy: {
       subtitle: 'Nuestra Filosofía',
@@ -335,21 +307,13 @@ export const translations: Record<Language, Translations> = {
       subtitle: '우리의 선택',
       title1: '소수를 위해',
       title2: '만들어진',
+      seasonal: seasonalData.ko,
       margarita: {
         title: '마르가리타',
         description1: '우리의 시그니처 창작물은 우리의 이야기를 정의합니다: 클래식하고, 균형잡힌, 잊을 수 없는.',
         description2: '진화하지만 시대를 초월한 맛을 발견하세요.',
       },
-      tequila: {
-        season: '10월 & 11월',
-        title: '데킬라',
-        description: '우리의 계절 뮤즈.',
-      },
-      gluhwein: {
-        season: '12월',
-        title: '글뤼바인',
-        description: '따뜻함으로 재해석.',
-      },
+      // tequila and gluhwein removed — use `seasonal` map instead
     },
     philosophy: {
       subtitle: '우리의 철학',
@@ -413,21 +377,13 @@ export const translations: Record<Language, Translations> = {
       subtitle: 'Notre Sélection',
       title1: 'Créé pour',
       title2: 'les Rares',
+      seasonal: seasonalData.fr,
       margarita: {
         title: 'La Margarita',
         description1: 'Notre création signature définit notre histoire : classique, équilibrée, inoubliable.',
         description2: 'Découvrez des saveurs qui évoluent tout en restant intemporelles.',
       },
-      tequila: {
-        season: 'Octobre et Novembre',
-        title: 'Tequila',
-        description: 'Notre muse saisonnière.',
-      },
-      gluhwein: {
-        season: 'Décembre',
-        title: 'Glühwein',
-        description: 'Réinventé avec chaleur.',
-      },
+      // tequila and gluhwein removed — use `seasonal` map instead
     },
     philosophy: {
       subtitle: 'Notre Philosophie',
@@ -491,21 +447,13 @@ export const translations: Record<Language, Translations> = {
       subtitle: 'La Nostra Selezione',
       title1: 'Creato per',
       title2: 'i Pochi',
+      seasonal: seasonalData.it,
       margarita: {
         title: 'Il Margarita',
         description1: 'La nostra creazione caratteristica definisce la nostra storia: classico, equilibrato, indimenticabile.',
         description2: 'Scopri sapori che evolvono pur rimanendo senza tempo.',
       },
-      tequila: {
-        season: 'Ottobre e Novembre',
-        title: 'Tequila',
-        description: 'La nostra musa stagionale.',
-      },
-      gluhwein: {
-        season: 'Dicembre',
-        title: 'Glühwein',
-        description: 'Reinterpretato con calore.',
-      },
+      // tequila and gluhwein removed — use `seasonal` map instead
     },
     philosophy: {
       subtitle: 'La Nostra Filosofia',
@@ -569,21 +517,13 @@ export const translations: Record<Language, Translations> = {
       subtitle: 'La Nostra Selecció',
       title1: 'Creat per',
       title2: 'als Pocs',
+      seasonal: seasonalData.ca,
       margarita: {
         title: 'El Margarita',
         description1: 'La nostra creació característica defineix la nostra història: clàssic, equilibrat, inoblidable.',
         description2: 'Descobreix sabors que evolucionen però romanen atemporals.',
       },
-      tequila: {
-        season: 'Octubre i Novembre',
-        title: 'Tequila',
-        description: 'La nostra musa estacional.',
-      },
-      gluhwein: {
-        season: 'Desembre',
-        title: 'Glühwein',
-        description: 'Reinventat amb calidesa.',
-      },
+      // tequila and gluhwein removed — use `seasonal` map instead
     },
     philosophy: {
       subtitle: 'La Nostra Filosofia',

@@ -7,12 +7,13 @@ import { Button } from './components/ui/button';
 import { LanguageSwitcher } from './components/LanguageSwitcher';
 import { useLanguage } from './contexts/LanguageContext';
 import { config } from './config';
+import type { SeasonalItem } from './data/seasonal';
 
 function AppContent() {
   const containerRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll();
   const { t } = useLanguage();
-  
+
   // Smooth parallax effects
   const heroY = useTransform(scrollYProgress, [0, 0.3], [0, 150]);
   const heroOpacity = useTransform(scrollYProgress, [0, 0.2], [1, 0]);
@@ -21,7 +22,7 @@ function AppContent() {
   useEffect(() => {
     // Add SEO metadata
     document.title = "Philipp's Margarita — Hidden Bar in Mainz, Germany";
-    
+
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
       metaDescription.setAttribute('content', "Philipp's Margarita is an exclusive, invitation-only hidden bar in Mainz, Germany. Discover signature margaritas, seasonal cocktails, and an unforgettable atmosphere.");
@@ -78,8 +79,8 @@ function AppContent() {
 
   const scrollToForm = () => {
     if (config.invitationFormEnabled) {
-      document.getElementById('invitation-section')?.scrollIntoView({ 
-        behavior: 'smooth' 
+      document.getElementById('invitation-section')?.scrollIntoView({
+        behavior: 'smooth'
       });
     }
   };
@@ -94,7 +95,7 @@ function AppContent() {
       {/* Hero Section with Parallax */}
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
         {/* Parallax Background */}
-        <motion.div 
+        <motion.div
           className="absolute inset-0"
           style={{ y: heroY, scale: heroScale }}
         >
@@ -107,7 +108,7 @@ function AppContent() {
         </motion.div>
 
         {/* Hero Content */}
-        <motion.div 
+        <motion.div
           className="relative z-10 text-center px-6 max-w-7xl mx-auto"
           style={{ opacity: heroOpacity }}
         >
@@ -123,10 +124,10 @@ function AppContent() {
               transition={{ duration: 1, delay: 0.8 }}
               className="h-px bg-gradient-to-r from-transparent via-[var(--color-gold)] to-transparent mb-12"
             />
-            
-            <h1 
-              className="mb-2 text-[var(--color-warm-white)] uppercase" 
-              style={{ 
+
+            <h1
+              className="mb-2 text-[var(--color-warm-white)] uppercase"
+              style={{
                 fontFamily: 'var(--font-gotham)',
                 fontSize: 'clamp(2.5rem, 10vw, 6.5rem)',
                 lineHeight: '0.95',
@@ -136,9 +137,9 @@ function AppContent() {
             >
               Philipp's
             </h1>
-            <h1 
-              className="text-[var(--color-gold)]" 
-              style={{ 
+            <h1
+              className="text-[var(--color-gold)]"
+              style={{
                 fontFamily: 'var(--font-gotham)',
                 fontSize: 'clamp(2.5rem, 10vw, 6.5rem)',
                 lineHeight: '0.95',
@@ -156,9 +157,9 @@ function AppContent() {
             transition={{ duration: 1, delay: 0.8 }}
             className="space-y-6"
           >
-            <p 
+            <p
               className="text-white/90 tracking-widest uppercase"
-              style={{ 
+              style={{
                 fontFamily: 'var(--font-gotham)',
                 fontSize: 'clamp(0.75rem, 1.5vw, 1rem)',
                 letterSpacing: '0.3em',
@@ -168,9 +169,9 @@ function AppContent() {
               {t.hero.subtitle}
             </p>
 
-            <p 
+            <p
               className="text-white/70 max-w-2xl mx-auto leading-relaxed"
-              style={{ 
+              style={{
                 fontSize: 'clamp(1rem, 1.8vw, 1.25rem)',
                 fontWeight: '300'
               }}
@@ -204,9 +205,9 @@ function AppContent() {
                 />
               </Button>
             ) : (
-              <p 
+              <p
                 className="text-[var(--color-gold)]/90 italic"
-                style={{ 
+                style={{
                   fontFamily: 'var(--font-elegant)',
                   fontSize: 'clamp(1.25rem, 2vw, 1.75rem)',
                   fontWeight: '300',
@@ -231,7 +232,7 @@ function AppContent() {
             transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
             className="flex flex-col items-center gap-2"
           >
-            <span 
+            <span
               className="text-[var(--color-gold)]/60 text-xs tracking-widest uppercase"
               style={{ fontFamily: 'var(--font-gotham)', fontWeight: '500' }}
             >
@@ -255,7 +256,7 @@ function AppContent() {
               className="space-y-8"
             >
               <div>
-                <motion.span 
+                <motion.span
                   initial={{ opacity: 0 }}
                   whileInView={{ opacity: 1 }}
                   viewport={{ once: true }}
@@ -264,9 +265,9 @@ function AppContent() {
                 >
                   {t.about.subtitle}
                 </motion.span>
-                <h2 
+                <h2
                   className="text-[var(--color-warm-white)] mb-8"
-                  style={{ 
+                  style={{
                     fontFamily: 'var(--font-heading)',
                     fontSize: 'clamp(2.5rem, 6vw, 4.5rem)',
                     lineHeight: '1.1',
@@ -356,15 +357,15 @@ function AppContent() {
             transition={{ duration: 0.8 }}
             className="text-center mb-20"
           >
-            <motion.span 
+            <motion.span
               className="text-[var(--color-gold)] uppercase tracking-[0.3em] text-sm mb-6 block"
               style={{ fontFamily: 'var(--font-gotham)', fontWeight: '600' }}
             >
               {t.drinks.subtitle}
             </motion.span>
-            <h2 
+            <h2
               className="text-[var(--color-warm-white)]"
-              style={{ 
+              style={{
                 fontFamily: 'var(--font-heading)',
                 fontSize: 'clamp(2.5rem, 7vw, 5rem)',
                 lineHeight: '1.1',
@@ -391,9 +392,9 @@ function AppContent() {
             <div className="relative overflow-hidden border border-[var(--color-gold)]/20 bg-gradient-to-br from-white/5 to-transparent backdrop-blur-sm">
               <div className="grid md:grid-cols-2 gap-0">
                 <div className="p-12 lg:p-16 flex flex-col justify-center">
-                  <motion.h3 
+                  <motion.h3
                     className="text-[var(--color-gold)] mb-6"
-                    style={{ 
+                    style={{
                       fontFamily: 'var(--font-elegant)',
                       fontSize: 'clamp(2rem, 5vw, 3.5rem)',
                       fontStyle: 'italic',
@@ -421,101 +422,70 @@ function AppContent() {
             </div>
           </motion.div>
 
-          {/* Seasonal Drinks Grid */}
+          {/* Seasonal Drinks Grid (data-driven) */}
           <div className="grid md:grid-cols-2 gap-8">
-            {/* Tequila Season */}
-            <motion.div
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.8, delay: 0.1 }}
-              className="group relative overflow-hidden border border-[var(--color-gold)]/20 hover:border-[var(--color-gold)]/40 transition-all duration-500"
-            >
-              <div className="absolute inset-0">
-                <ImageWithFallback
-                  src="/images/tequila.webp"
-                  alt="Tequila bottle"
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/80 to-black/40"></div>
-              </div>
-              
-              <div className="relative p-10 h-[450px] flex flex-col justify-end">
-                <motion.div
-                  initial={{ width: 0 }}
-                  whileInView={{ width: '4rem' }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.8, delay: 0.3 }}
-                  className="h-px bg-[var(--color-gold)] mb-6"
-                />
-                <p 
-                  className="text-[var(--color-gold)] uppercase tracking-[0.2em] text-xs mb-3"
-                  style={{ fontFamily: 'var(--font-gotham)', fontWeight: '600' }}
-                >
-                  {t.drinks.tequila.season}
-                </p>
-                <h3 
-                  className="text-white mb-4"
-                  style={{ 
-                    fontFamily: 'var(--font-heading)',
-                    fontSize: 'clamp(2rem, 4vw, 2.5rem)',
-                    fontWeight: '600'
-                  }}
-                >
-                  {t.drinks.tequila.title}
-                </h3>
-                <p className="text-white/70" style={{ fontFamily: 'var(--font-elegant)', fontStyle: 'italic' }}>
-                  {t.drinks.tequila.description}
-                </p>
-              </div>
-            </motion.div>
+            {(() => {
+              const seasonal = (t.drinks as any).seasonal as Record<string, SeasonalItem> | undefined;
+              if (!seasonal) {
+                return (
+                  <div className="col-span-2 text-center text-white/60">No seasonal drinks available.</div>
+                );
+              }
 
-            {/* Glühwein Season */}
-            <motion.div
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              className="group relative overflow-hidden border border-[var(--color-gold)]/20 hover:border-[var(--color-gold)]/40 transition-all duration-500"
-            >
-              <div className="absolute inset-0">
-                <ImageWithFallback
-                  src="/images/gluhwein.webp"
-                  alt="Warm drink"
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/80 to-black/40"></div>
-              </div>
-              
-              <div className="relative p-10 h-[450px] flex flex-col justify-end">
+              const items = Object.keys(seasonal)
+                .sort()
+                .map((k) => ({ key: k, ...seasonal[k] }))
+                .filter((it) => it.enabled !== false); // hide disabled entries
+
+              return items.map((item, idx) => (
                 <motion.div
-                  initial={{ width: 0 }}
-                  whileInView={{ width: '4rem' }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.8, delay: 0.4 }}
-                  className="h-px bg-[var(--color-gold)] mb-6"
-                />
-                <p 
-                  className="text-[var(--color-gold)] uppercase tracking-[0.2em] text-xs mb-3"
-                  style={{ fontFamily: 'var(--font-gotham)', fontWeight: '600' }}
+                  key={item.key}
+                  initial={{ opacity: 0, y: 40 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-100px" }}
+                  transition={{ duration: 0.8, delay: 0.1 + idx * 0.1 }}
+                  className="group relative overflow-hidden border border-[var(--color-gold)]/20 hover:border-[var(--color-gold)]/40 transition-all duration-500"
                 >
-                  {t.drinks.gluhwein.season}
-                </p>
-                <h3 
-                  className="text-white mb-4"
-                  style={{ 
-                    fontFamily: 'var(--font-heading)',
-                    fontSize: 'clamp(2rem, 4vw, 2.5rem)',
-                    fontWeight: '600'
-                  }}
-                >
-                  {t.drinks.gluhwein.title}
-                </h3>
-                <p className="text-white/70" style={{ fontFamily: 'var(--font-elegant)', fontStyle: 'italic' }}>
-                  {t.drinks.gluhwein.description}
-                </p>
-              </div>
-            </motion.div>
+                  <div className="absolute inset-0">
+                    <ImageWithFallback
+                      src={item.image ?? '/images/hero.webp'}
+                      alt={item.title}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black via-black/80 to-black/40"></div>
+                  </div>
+
+                  <div className="relative p-10 h-[450px] flex flex-col justify-end">
+                    <motion.div
+                      initial={{ width: 0 }}
+                      whileInView={{ width: '4rem' }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.8, delay: 0.3 }}
+                      className="h-px bg-[var(--color-gold)] mb-6"
+                    />
+                    <p
+                      className="text-[var(--color-gold)] uppercase tracking-[0.2em] text-xs mb-3"
+                      style={{ fontFamily: 'var(--font-gotham)', fontWeight: '600' }}
+                    >
+                      {item.season}
+                    </p>
+                    <h3
+                      className="text-white mb-4"
+                      style={{
+                        fontFamily: 'var(--font-heading)',
+                        fontSize: 'clamp(2rem, 4vw, 2.5rem)',
+                        fontWeight: '600'
+                      }}
+                    >
+                      {item.title}
+                    </h3>
+                    <p className="text-white/70" style={{ fontFamily: 'var(--font-elegant)', fontStyle: 'italic' }}>
+                      {item.description}
+                    </p>
+                  </div>
+                </motion.div>
+              ));
+            })()}
           </div>
         </div>
       </section>
@@ -540,16 +510,16 @@ function AppContent() {
               transition={{ duration: 1.2 }}
               className="max-w-5xl text-center"
             >
-              <motion.span 
+              <motion.span
                 className="text-[var(--color-gold)] uppercase tracking-[0.3em] text-sm mb-8 block"
                 style={{ fontFamily: 'var(--font-gotham)', fontWeight: '600' }}
               >
                 {t.philosophy.subtitle}
               </motion.span>
-              
-              <h2 
+
+              <h2
                 className="text-[var(--color-warm-white)] mb-12"
-                style={{ 
+                style={{
                   fontFamily: 'var(--font-heading)',
                   fontSize: 'clamp(2.5rem, 8vw, 6rem)',
                   lineHeight: '1.1',
@@ -565,7 +535,7 @@ function AppContent() {
               </h2>
 
               <div className="space-y-8 max-w-3xl mx-auto">
-                <motion.p 
+                <motion.p
                   className="text-white/90 leading-relaxed"
                   style={{ fontSize: 'clamp(1.25rem, 2.5vw, 2rem)' }}
                   initial={{ opacity: 0 }}
@@ -575,7 +545,7 @@ function AppContent() {
                 >
                   {t.philosophy.paragraph1}
                 </motion.p>
-                
+
                 <motion.div
                   initial={{ scaleX: 0 }}
                   whileInView={{ scaleX: 1 }}
@@ -583,8 +553,8 @@ function AppContent() {
                   transition={{ delay: 0.5, duration: 1 }}
                   className="h-px bg-gradient-to-r from-transparent via-[var(--color-gold)] to-transparent"
                 />
-                
-                <motion.p 
+
+                <motion.p
                   className="text-white/70 leading-relaxed text-lg"
                   initial={{ opacity: 0 }}
                   whileInView={{ opacity: 1 }}
@@ -612,15 +582,15 @@ function AppContent() {
               transition={{ duration: 0.8 }}
               className="text-center mb-16"
             >
-              <motion.span 
+              <motion.span
                 className="text-[var(--color-gold)] uppercase tracking-[0.3em] text-sm mb-6 block"
                 style={{ fontFamily: 'var(--font-gotham)', fontWeight: '600' }}
               >
                 {t.invitation.subtitle}
               </motion.span>
-              <h2 
+              <h2
                 className="text-[var(--color-warm-white)] mb-8"
-                style={{ 
+                style={{
                   fontFamily: 'var(--font-heading)',
                   fontSize: 'clamp(2.5rem, 7vw, 5rem)',
                   lineHeight: '1.1',
@@ -663,9 +633,9 @@ function AppContent() {
           >
             {/* Logo/Title */}
             <div>
-              <h3 
+              <h3
                 className="text-[var(--color-warm-white)] mb-2 uppercase"
-                style={{ 
+                style={{
                   fontFamily: 'var(--font-gotham)',
                   fontSize: 'clamp(1.5rem, 3vw, 2rem)',
                   fontWeight: '700',
@@ -688,7 +658,7 @@ function AppContent() {
               className="h-px bg-gradient-to-r from-transparent via-[var(--color-gold)]/30 to-transparent max-w-md mx-auto"
             />
 
-            <p 
+            <p
               className="text-white/40 italic text-sm"
               style={{ fontFamily: 'var(--font-elegant)' }}
             >
